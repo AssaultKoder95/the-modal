@@ -5,10 +5,10 @@ import Modal from './Modal';
 import { useState } from 'react';
 
 function App() {
-  const [showModal, setModalState] = useState(false);
+  const [modalState, setModalState] = useState(false);
 
-  const onToggle = () => {
-    setModalState(!showModal);
+  const toggleModalState = () => {
+    setModalState(!modalState);
   }
   return (
     <div className="App">
@@ -17,14 +17,16 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <button onClick={onToggle}>
+        <button onClick={toggleModalState}>
           Show logo in Modal
         </button>
-        { showModal ? <Modal>
+        { modalState ? 
+        <Modal>
           <img src={logo} className="App-logo" alt="logo" />
           <p>Logo in modal</p>
-          <button onClick={onToggle}>Close Modal</button>
-        </Modal> : null}
+          <button onClick={toggleModalState}>Close Modal</button>
+        </Modal>
+        : null }
       </header>
     </div>
   );
